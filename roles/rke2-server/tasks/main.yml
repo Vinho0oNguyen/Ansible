@@ -1,0 +1,23 @@
+- name: get rke2 server script
+  get_url:
+    url: https://get.rke2.io
+    dest: /root/
+
+- name: install rke2
+  shell: /root/index.html
+
+- name: daemon-reload to pick up config changes
+  ansible.builtin.systemd:
+    daemon_reload: yes
+
+
+- name: enable rke2 server
+  ansible.builtin.systemd:
+     name: rke2-server
+     enabled: yes
+
+
+- name: Start rke2
+  ansible.builtin.systemd:
+    name: rke2-server
+    state: started
