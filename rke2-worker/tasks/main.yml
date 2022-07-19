@@ -1,0 +1,14 @@
+- name: get rke2 server script
+  get_url:
+    url: https://get.rke2.io
+    dest: /root/
+    mode: "777"
+
+- name: export variable
+  shell: export INSTALL_RKE2_TYPE=agent
+
+- name: install rke2
+  shell: /root/index.html
+
+
+

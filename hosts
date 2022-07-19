@@ -1,2 +1,11 @@
-[worker]
-10.148.0.13 ansible_user=vinho0onguyen ansible_ssh_private_key_file=/home/vinho0onguyen/.ssh/private_key
+[localhost]
+10.178.0.3	ansible_user=vinho0onguyen 	ansible_ssh_private_key_file=/home/vinho0onguyen/key/private_key
+
+[jenkins]
+10.178.0.2	ansible_user=vinho0onguyen      ansible_ssh_private_key_file=/home/vinho0onguyen/key/private_key
+
+[rke2-master]
+10.178.0.4	ansible_user=vinho0onguyen      ansible_ssh_private_key_file=/home/vinho0onguyen/key/private_key
+
+[rke2-worker]
+10.178.0.5	ansible_user=vinho0onguyen      ansible_ssh_private_key_file=/home/vinho0onguyen/key/private_key

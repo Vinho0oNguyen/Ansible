@@ -1,0 +1,28 @@
+---
+- name: Install docker
+  hosts: localhost
+  become: true
+  roles:
+    - docker
+
+- name: Install jenkins
+  hosts: jenkins
+  become: true
+  roles:
+    - jenkins
+
+
+- name: Install rke2 master
+  hosts: rke2-master
+  become: true
+  roles:
+    - rke2-master
+
+- name: Install rke2 worker
+  hosts: rke2-worker
+  become: true
+  roles:
+    - rke2-worker
+
+
+

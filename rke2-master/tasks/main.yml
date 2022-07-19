@@ -1,0 +1,36 @@
+- name: get rke2 server script
+  get_url:
+    url: https://get.rke2.io
+    dest: /root/
+    mode: "777"
+
+- name: install rke2
+  shell: /root/index.html
+
+- name: daemon-reload to pick up config changes
+  ansible.builtin.systemd:
+    daemon_reload: yes
+
+
+- name: enable rke2 server
+  ansible.builtin.systemd:
+     name: rke2-server
+     enabled: yes
+
+
+- name: Start rke2
+  ansible.builtin.systemd:
+    name: rke2-server
+    state: started
+
+
+- name: Add another bin dir to system-wide $PATH.
+  copy:
+    dest: /etc/profile.d/rke2.sh
+    content: 'PATH=$PATH:{{ path_rke2 }}'
+
+- name: Add KUBECONFIG
+  copy:
+    dest: /etc/profile.d/kubeconfig.sh
+    content: 'export KUBECONFIG={{kubeconfig}}'
+

@@ -1,0 +1,14 @@
+- name: install updates
+  yum: name=* state=latest
+  
+- name: disable SELinux
+  selinux:
+    state=disabled
+
+- name: install git
+  yum:
+    name: git
+    state: latest
+
+- name: reboot
+  command: reboot

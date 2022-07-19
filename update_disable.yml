@@ -1,0 +1,6 @@
+---
+- name: Update and Disable SELinux
+  hosts: all
+  become: true
+  roles:
+    - common

@@ -1,0 +1,13 @@
+- name: install docker
+  yum:
+    name: docker
+    state: latest
+
+- name: daemon-reload to pick up config changes
+  ansible.builtin.systemd:
+    daemon_reload: yes
+
+- name: Start jenkins
+  ansible.builtin.systemd:
+    name: docker
+    state: started
