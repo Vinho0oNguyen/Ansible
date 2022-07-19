@@ -1,2 +1,6 @@
 - name: install updates
   yum: name=* state=latest
+  
+- name: Disable SELinux
+  ansible.posix.selinux:
+    state: disabled
