@@ -4,11 +4,30 @@
     dest: /root/
     mode: "777"
 
-- name: export variable
-  shell: export INSTALL_RKE2_TYPE=agent
-
-- name: install rke2
-  shell: /root/index.html
+- name: run script
+  shell: INSTALL_RKE2_TYPE=agent /root/index.html
 
 
+- name: Create folder
+  command: mkdir -p /etc/rancher/rke2
 
+- name: Create file
+  lineinfile:
+    path: /etc/rancher/rke2/config.yaml
+    state: present
+    create: yes
+    line: "{{ item }}"
+  with_items:
+   - 'server: https://{{ server }}:9345'
+   - 'token: {{ token }}'
+
+- name: enable rke2 worker
+  ansible.builtin.systemd:
+     name: rke2-agent
+     enabled: yes
+
+
+- name: Start worker
+  ansible.builtin.systemd:
+    name: rke2-agent
+    state: started
