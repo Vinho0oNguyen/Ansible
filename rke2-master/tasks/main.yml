@@ -33,4 +33,20 @@
   copy:
     dest: /etc/profile.d/kubeconfig.sh
     content: 'export KUBECONFIG={{kubeconfig}}'
+    
+- name: Edit var token
+  lineinfile:
+    path: /home/vinho0onguyen/main.yml
+    state: present
+    create: yes
+    line: "{{ item }}"
+  with_items:
+   - 'server: {{inventory_hostname}}'
+   - 'token: {{ key.stdout }}'
+
+- name: Fetch token to Ansible server
+  ansible.builtin.fetch:
+    src: /home/vinho0onguyen/main.yml
+    dest: /etc/ansible/roles/rke2-worker/vars/
+    flat: yes
 
