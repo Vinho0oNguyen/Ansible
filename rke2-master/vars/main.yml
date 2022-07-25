@@ -1,2 +1,0 @@
-path_rke2: /var/lib/rancher/rke2/bin/
-kubeconfig: /etc/rancher/rke2/rke2.yaml
