@@ -1,0 +1,6 @@
+---
+- name: Deploy api
+  hosts: rke2-master
+  roles:
+    - k8s
+

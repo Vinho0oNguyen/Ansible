@@ -1,0 +1,7 @@
+---
+- name: Build images
+  hosts: localhost
+  become: true
+  roles:
+    - build_docker
+
