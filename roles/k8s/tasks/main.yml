@@ -1,6 +1,6 @@
 - name: Copy file Deploy to rke-master
   copy:
-    src: /home/vinho0onguyen/rke2_deploy/api.yml
+    src: ~/Ansible/rke2_deploy/api.yml
     dest: /home/vinho0onguyen/rke2_deploy/
     owner: vinho0onguyen
 
