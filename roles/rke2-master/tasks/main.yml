@@ -35,7 +35,12 @@
   copy:
     dest: /etc/profile.d/kubeconfig.sh
     content: 'export KUBECONFIG={{kubeconfig}}'
+    
+- name: Run script rke2
+  shell: source /etc/profile.d/rke2.sh
 
+- name: Run script kubeconfig
+  shell: source /etc/profile.d/kubeconfig.sh
 
 - name: Get token
   command: cat /var/lib/rancher/rke2/server/node-token
