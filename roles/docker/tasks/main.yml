@@ -5,7 +5,7 @@
 
 - name: Install tool for module docker
   yum:
-    name: docker-py
+    name: python-docker
     state: latest
 
 - name: daemon-reload to pick up config changes
