@@ -4,15 +4,12 @@
 - name: disable SELinux
   selinux:
     state=disabled
-  register: st
 
 - name: install git
   yum:
     name: git
     state: latest
-
-
  
 - name: reboot
   command: reboot
-  when: st.state != "disabled"
+  
